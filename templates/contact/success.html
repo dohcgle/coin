@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="Request-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="abouttitle">
+                        <h2>Success form</h2>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="Request">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage3">
+                        <h2>Thanks for contacting</h2>
+                    </div>
+                    <h3>Your message:</h3>
+                    <div class="col-6">
+                        <table class="table">
+
+                            <tr>
+                                <th scope="col">id</th>
+                                <td>{{ message.id }}</td>
+                            </tr>
+                             <tr>
+                                <th scope="col">Name</th>
+                                <td>{{ message.name }}</td>
+                            </tr>
+                             <tr>
+                                <th scope="col">Phone</th>
+                                <td>{{ message.phone }}</td>
+                            </tr>
+                             <tr>
+                                <th scope="col">Email</th>
+                                <td>{{ message.email}}</td>
+                            </tr>
+                             <tr>
+                                <th scope="col">Message</th>
+                                <td>{{ message.message }}</td>
+                            </tr>
+                             <tr>
+                                <th scope="col">Date</th>
+                                <td>{{ message.created_at|date:'d.m.Y'}}</td>
+                            </tr>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="about-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="abouttitle">
+                        <h2>Currency detail</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--state abouts -->
+    <div class="abouts">
+        <dir class="abouts-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-10 col-lg-10 col-md-6 col-sm-12">
+                        <div class="abouts-us">
+                            <h3>{{ currency.title }}</h3>
+                            <h4>Date: {{ currency.created_at|date:'d.m.Y' }}</h4>
+                            <img src="{{ currency.image.url }}">
+                            <hr>
+                            <p>{{ currency.content }}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </dir>
+    </div>
+{% endblock %}

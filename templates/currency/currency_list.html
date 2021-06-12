@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="Currency-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="abouttitle">
+                        <h2>Currency</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Currency -->
+    <div class="Currency">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>NEED TO TAKE CARE OF YOUR <strong class="cur">CURRENCY INVESTMENTS</strong></h2>
+                        <span><img src="{% static 'images/boder.png' %} " alt="img"/> </span></div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                {% if currencies %}
+                    {% for currency in currencies %}
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="three-box">
+                                <figure><img src="{{ currency.image.url }}" alt="img"/></figure>
+                                <div class="Bitcoin"><i><img src="{% static 'images/dollar.png' %}" alt="img"/></i>
+                                    <h3>{{ currency.title }}</h3>
+                                    <p>{{ currency.description }}</p>
+                                </div>
+                                <a class="read-more" href="{% url 'currency_detail' currency.slug %}">Read More</a></div>
+                        </div>
+                    {% endfor %}
+
+                {% else %}
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <h4>No currencies</h4>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+    <!-- end Currency -->
+{% endblock %}

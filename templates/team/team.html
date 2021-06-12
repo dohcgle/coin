@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="Team-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="abouttitle">
+                        <h2>our Team</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- state abouts -->
+    <div class="our experts">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage2">
+                        <h2>our <strong class="cur">Team</strong></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="experts-box">
+            <div class="container">
+                <div class="row">
+
+                    {% if teams %}
+                        {% for team in teams %}
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                                <div class="experts-threebox">
+                                    <figure><img src="{{ team.image.url }}" alt="img"/></figure>
+                                    <h3>{{ team.full_name }} </h3>
+                                    <span>{{ team.position }}</span>
+                                    <p>{{ team.description }}</p>
+                                    <div class="icon"><i> <a href="{{ team.facebook }}"><img src="{% static 'images/facebook.png' %}"></a></i>
+                                        <i> <a href="{{ team.twitter }}"><img src=" {% static 'images/twitter.png' %} "></a></i>
+                                        <i> <a href="{{ team.linkedin }}"><img src=" {% static 'images/linkedin.png' %} "></a></i>
+                                        <i> <a href="{{ team.instagram }}"><img src="{% static 'images/instagram.png' %}"></a></i>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    {% else %}
+                    {% endif %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end abouts -->
+{% endblock %}
