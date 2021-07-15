@@ -20,17 +20,17 @@
 #### virtualenv ўрнатилгандан сўнг, лойиҳа учун каталог яратиш ва унга кириш керак
 > mkdir ~/myprojectdir <br>
 > cd ~/myprojectdir
-####  Лойиҳа каталигида куйидаги буйрук ердамида Python виртуал муҳитини яратинг
+####  Лойиҳа каталигида куйидаги буйруқ ёрдамида Python виртуал муҳитини яратинг
 > virtualenv myprojectenv
 ####  Виртуал мухитини активлаштиринг
 > source myprojectenv/bin/activate
-####  Виртуал мухитини тўғри ишга туширган бўлсангиз (myprojectenv) - кўринишда бўлади.
+####  Виртуал муҳитини тўғри ишга туширган бўлсангиз (myprojectenv) - кўринишда бўлади.
 #### Энди Django, Gunicorn урнатинг:
 > pip install django gunicorn
 
-### Django лойихани github кучириб олиш ва созлаш
+### Django лойиҳани github кўчириб олиш ва созлаш
 > git clone https://github.com/dohcgle/coin.git
-#### Статитик файлларни йигиш ва бир жойга туплаш
+#### Статитик файлларни йигиш ва бир жойга тўплаш
 > ./manage.py collectstatic
 #### Django 8000 портини ишлатади, шунинг учун биз шу портга рухсат очишимиз керак
 > sudo ufw allow 8000
@@ -44,7 +44,7 @@
 > deactivate
 
 ### Gunicorn socket ва systemd хизмат файлларини яратиш
-### systemd файлини яратинг ва унга куйидагиларни ёзинг
+### systemd файлини яратинг ва унга қуйидагиларни ёзинг
 > sudo nano /etc/systemd/system/gunicorn.socket
 ```
 [Unit]
@@ -57,7 +57,7 @@ ListenStream=/run/gunicorn.sock
 WantedBy=sockets.target
 ```
 
-### Энди gunicorn.service файлини яратинг ва унга куйидагиларни ёзинг
+### Энди gunicorn.service файлини яратинг ва унга қуйидагиларни ёзинг
 > sudo nano /etc/systemd/system/gunicorn.service
 ```
 [Unit] 
@@ -79,15 +79,15 @@ ExecStart=/home/ulugbek/myprojectdir/myprojectenv/bin/gunicorn \
 WantedBy=multi-user.target
 ```
 
-### systemd файли тайёр булди, сакланг ва уни ёпинг.
+### systemd файли тайёр бўлди, сақланг ва уни ёпинг.
 ### Энди Gunicorn сокетни активлаштиришимиз ва ишга туширишимиз мумкин:
 > sudo systemctl start gunicorn.socket <br>
 > sudo systemctl enable gunicorn.socket
-### Gunicorn узгартиришлар киритсангиз, уни учириб кайта ёкинг
+### Gunicorn ўзгартиришлар киритсангиз, уни ўчириб кайта ёқинг
 >sudo systemctl daemon-reload <br>
 > sudo systemctl restart gunicorn
-### Энди Nginx сервери ва Gunicorn алокаларини созлаймиз
-### Nginx католигида sites-available блокини яратамиз ва унга куйидаги командаларни ёзамиз
+### Энди Nginx сервери ва Gunicorn алоқаларини созлаймиз
+### Nginx каталигида sites-available блокини яратамиз ва унга қуйидаги командаларни ёзамиз
 > sudo nano /etc/nginx/sites-available/myproject
 
 ``` 
@@ -105,12 +105,12 @@ server {
 } 
 ```
 
-### Файлни сакланг ва ёпинг. Энди файлларни сайтлар каталогига улаб уни активлаштиришимиз мумкин.
+### Файлни сақланг ва ёпинг. Энди файлларни сайтлар каталогига улаб уни активлаштиришимиз мумкин.
 > sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled
 
-## Нихоят биз Django лойихани Nginx ва Gunicorn ёрдамида Ubuntu server 20.04 урнатишни ургандик.
+## Ниҳоят биз Django лойиҳани Nginx ва Gunicorn ёрдамида Ubuntu server 20.04 ўрнатишни ўргандик.
 
-### Йурикнома https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-20-04-ru маколаси асосида тайёрланди
+### Йуриқнома https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-20-04-ru мақоласи асосида тайёрланди
 
 
 
